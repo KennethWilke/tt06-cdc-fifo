@@ -9,11 +9,20 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This is a FIFO that can pass data asynchronously across clock domains. This was a project I created when I was first learning logic design, and it took me a couple weeks to settle on a design that I felt was clean and reusable.
+
+The original design can be found at [https://github.com/KennethWilke/sv-cdc-fifo](https://github.com/KennethWilke/sv-cdc-fifo)
+
+The architecture of this design was influenced by
+[this paper](http://www.sunburst-design.com/papers/CummingsSNUG2002SJ_FIFO1.pdf)
+written by Clifford E. Cummings of
+[Sunburst Design](http://www.sunburst-design.com) by the implementation was fully written by me. 
 
 ## How to test
 
-Explain how to use your project
+Abandon all hope, ye who enter...
+
+I need to write this!
 
 ## External hardware
 
