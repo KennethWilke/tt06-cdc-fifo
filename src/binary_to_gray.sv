@@ -1,5 +1,6 @@
-module binary_to_gray
-    #(parameter WIDTH = 8) (
+module binary_to_gray #(
+  parameter WIDTH = 8
+) (
   input logic [WIDTH-1:0] binary,
   output logic [WIDTH-1:0] gray
 );

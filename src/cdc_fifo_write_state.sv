@@ -1,5 +1,6 @@
-module cdc_fifo_write_state
-    #(parameter ADDRESS_WIDTH = 4) (
+module cdc_fifo_write_state #(
+  parameter ADDRESS_WIDTH = 4
+) (
   input logic clock,
   input logic reset,
   input logic increment,
@@ -14,14 +15,16 @@ module cdc_fifo_write_state
 
   logic [ADDRESS_WIDTH-1:0] read_address;
 
-  gray_to_binary
-      #(.WIDTH(4)) read_addr_decode (
+  gray_to_binary #(
+    .WIDTH(4)
+  ) read_addr_decode (
     .gray(read_address_gray),
     .binary(read_address)
   );
 
-  binary_to_gray
-      #(.WIDTH(4)) write_addr_encode (
+  binary_to_gray #(
+    .WIDTH(4)
+  ) write_addr_encode (
     .binary(write_address),
     .gray(write_address_gray)
   );

@@ -1,7 +1,8 @@
 // FIFO for passing registers across clock domains
-module cdc_fifo
-    #(parameter DATA_WIDTH = 8,
-      parameter ADDRESS_WIDTH = 4) (
+module cdc_fifo #(
+  parameter DATA_WIDTH = 8,
+  parameter ADDRESS_WIDTH = 4
+) (
   // Sender side signals/buses
   input logic write_clock,
   input logic write_reset,

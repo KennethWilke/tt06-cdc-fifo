@@ -1,7 +1,8 @@
 // Dual-ported parameterized RAM module
-module dpram
-    #(parameter DATA_WIDTH = 8,
-      parameter ADDRESS_WIDTH = 8) (
+module dpram #(
+  parameter DATA_WIDTH = 8,
+  parameter ADDRESS_WIDTH = 8
+) (
   input logic clock,
 
   input logic [ADDRESS_WIDTH-1:0] write_address,

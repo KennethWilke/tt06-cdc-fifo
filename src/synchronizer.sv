@@ -1,5 +1,6 @@
-module synchronizer
-    #(parameter WIDTH = 1) (
+module synchronizer #(
+  parameter WIDTH = 1
+) (
   input logic clock,
   input logic reset,
   input logic [0:WIDTH-1] in,
