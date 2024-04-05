@@ -1,5 +1,3 @@
-`timescale 1ns/1ns
-
 module synchronizer
     #(parameter WIDTH = 1,
       parameter DEPTH = 1) (

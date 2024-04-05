@@ -1,5 +1,3 @@
-`timescale 1ns/1ns
-
 module cdc_fifo_read_state
     #(parameter ADDRESS_WIDTH = 4) (
   input logic clock,

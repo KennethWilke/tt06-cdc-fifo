@@ -1,7 +1,4 @@
 // FIFO for passing registers across clock domains
-
-`timescale 1ns/1ns
-
 module cdc_fifo
     #(parameter DATA_WIDTH = 8,
       parameter ADDRESS_WIDTH = 4) (

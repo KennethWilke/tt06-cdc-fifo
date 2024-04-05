@@ -1,5 +1,3 @@
-`timescale 1ns/1ns
-
 module binary_to_gray
     #(parameter WIDTH = 8) (
   input logic [WIDTH-1:0] binary,

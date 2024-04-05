@@ -1,7 +1,4 @@
 // Dual-ported parameterized RAM module
-
-`timescale 1ns/1ns
-
 module dpram
     #(parameter DATA_WIDTH = 8,
       parameter ADDRESS_WIDTH = 8) (
