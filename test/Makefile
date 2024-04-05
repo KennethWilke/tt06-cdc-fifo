@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = project.v cdc_fifo.sv dpram.sv cdc_fifo_read_state.sv cdc_fifo_write_state.sv binary_to_gray.sv gray_to_binary.sv synchronizer.sv
 
 ifneq ($(GATES),yes)
 
