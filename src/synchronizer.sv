@@ -6,7 +6,7 @@ module synchronizer
   input logic [0:WIDTH-1] in,
   output logic [0:WIDTH-1] out);
 
-  logic [0:WIDTH-1] data [0:DEPTH-1];
+  logic [0:DEPTH-1][0:WIDTH-1] data;
 
   always_ff @ (posedge clock or posedge reset) begin
     if (reset) begin
