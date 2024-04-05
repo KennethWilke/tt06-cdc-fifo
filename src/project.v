@@ -23,15 +23,15 @@ module tt_um_kwilke_cdc_fifo (
     write_increment = ui_in[1],
     read_clock = ui_in[2],
     read_increment = ui_in[3],
-    write_data = ui_in[4:7];
+    write_data = ui_in[7:4];
 
   // uo_out mappings
   wire empty, full;
   wire [3:0] read_data;
   assign uo_out[0] = empty,
     uo_out[1] = full,
-    uo_out[2:3] = 'b00,
-    uo_out[4:7] = read_data;
+    uo_out[3:2] = 'b00,
+    uo_out[7:4] = read_data;
 
   // uio_out mapping
   wire write_reset, read_reset;
