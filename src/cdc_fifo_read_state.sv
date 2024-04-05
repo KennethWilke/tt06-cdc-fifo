@@ -30,7 +30,7 @@ module cdc_fifo_read_state
     if (reset) begin
       read_address <= 0;
     end else if (increment & !empty) begin
-      read_address++;
+      read_address <= read_address + 1;
     end
   end
 

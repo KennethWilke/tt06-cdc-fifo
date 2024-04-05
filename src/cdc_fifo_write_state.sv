@@ -30,7 +30,7 @@ module cdc_fifo_write_state
     if (reset) begin
       write_address <= 0;
     end else if (increment & !full) begin
-      write_address++;
+      write_address <= write_address + 1;
     end
   end
 
