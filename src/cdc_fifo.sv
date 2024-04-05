@@ -27,9 +27,10 @@ module cdc_fifo
 
   assign write_enable = (!full & write_increment);
 
-  dpram
-      #(.DATA_WIDTH(DATA_WIDTH),
-        .ADDRESS_WIDTH(ADDRESS_WIDTH)) memory (
+  dpram #(
+    .DATA_WIDTH(DATA_WIDTH),
+    .ADDRESS_WIDTH(ADDRESS_WIDTH)
+  ) memory (
     .clock(write_clock),
     .write_address(write_address),
     .write_data(write_data),
@@ -38,8 +39,9 @@ module cdc_fifo
     .read_data(read_data)
   );
 
-  cdc_fifo_write_state
-      #(.ADDRESS_WIDTH(ADDRESS_WIDTH)) writestate (
+  cdc_fifo_write_state #(
+    .ADDRESS_WIDTH(ADDRESS_WIDTH)
+  ) writestate (
     .clock(write_clock),
     .reset(write_reset),
     .increment(write_increment),
@@ -49,8 +51,9 @@ module cdc_fifo
     .full(full)
   );
 
-  cdc_fifo_read_state
-      #(.ADDRESS_WIDTH(ADDRESS_WIDTH)) readstate (
+  cdc_fifo_read_state #(
+    .ADDRESS_WIDTH(ADDRESS_WIDTH)
+  ) readstate (
    .clock(read_clock),
    .reset(read_reset),
    .increment(read_increment),
@@ -60,18 +63,18 @@ module cdc_fifo
    .empty(empty)
   );
 
-  synchronizer
-      #(.WIDTH(ADDRESS_WIDTH),
-        .DEPTH(1)) write_address_sync (
+  synchronizer #(
+    .WIDTH(ADDRESS_WIDTH)
+  ) write_address_sync (
     .clock(read_clock),
     .reset(read_reset),
     .in(write_address_gray_presync),
     .out(write_address_gray_postsync)
   );
 
-  synchronizer
-      #(.WIDTH(ADDRESS_WIDTH),
-        .DEPTH(1)) read_address_sync (
+  synchronizer #(
+    .WIDTH(ADDRESS_WIDTH)
+  ) read_address_sync (
     .clock(write_clock),
     .reset(write_reset),
     .in(read_address_gray_presync),
