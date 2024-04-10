@@ -30,7 +30,7 @@ jobs:
           ! grep failure results.xml
 
       - name: Test Summary
-        uses: test-summary/action@v2.2
+        uses: test-summary/action@v2.3
         with:
           paths: "test/results.xml"
         if: always()
