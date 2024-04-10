@@ -78,6 +78,4 @@ set ::env(DESIGN_IS_CORE) 0
 set ::env(RT_MAX_LAYER) {met4}
 
 # Added by KennethWilke
-set ::env(CLOCK_PORT1) "ui_in\\\[0\\\]"
-set ::env(CLOCK_PORT2) "ui_in\\\[2\\\]"
 set ::env(BASE_SDC_FILE) "$::env(DESIGN_DIR)/project.sdc"

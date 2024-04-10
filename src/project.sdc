@@ -1,5 +1,5 @@
-create_clock [get_ports $::env(CLOCK_PORT1)]  -name clock_1  -period $::env(CLOCK_PERIOD)
-create_clock [get_ports $::env(CLOCK_PORT2)]  -name clock_2  -period $::env(CLOCK_PERIOD)
+create_clock [get_ports "ui_in\[0\]"]  -name clock_1  -period $::env(CLOCK_PERIOD)
+create_clock [get_ports "ui_in\[2\]"]  -name clock_2  -period $::env(CLOCK_PERIOD)
 
 set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
 set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
