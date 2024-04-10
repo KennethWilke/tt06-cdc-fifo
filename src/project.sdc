@@ -1,5 +1,8 @@
-create_clock [get_ports "ui_in\[0\]"]  -name clock_1  -period $::env(CLOCK_PERIOD)
-create_clock [get_ports "ui_in\[2\]"]  -name clock_2  -period $::env(CLOCK_PERIOD)
+set clk_input1 [get_port $::env(CLOCK_PORT)]
+set clk_input2 [get_port $::env(CLOCK_PORT2)]
+
+create_clock $clk_input1  -name clock_1  -period $::env(CLOCK_PERIOD)
+create_clock $clk_input2 -name clock_2  -period $::env(CLOCK_PERIOD)
 
 set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
 set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
@@ -11,8 +14,6 @@ if { [info exists ::env(MAX_TRANSITION_CONSTRAINT)] } {
     set_max_transition $::env(MAX_TRANSITION_CONSTRAINT) [current_design]
 }
 
-set clk_input1 [get_port "ui_in\[0\]"]
-set clk_input2 [get_port "ui_in\[2\]"]
 set clk_indx1 [lsearch [all_inputs] $clk_input1]
 set clk_indx2 [lsearch [all_inputs] $clk_input2]
 set all_inputs_wo_clk [lreplace [lreplace [all_inputs] $clk_indx1 $clk_indx1 ""] $clk_indx2 $clk_indx2 ""]
