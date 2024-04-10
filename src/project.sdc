@@ -1,9 +1,5 @@
-if {[info exists ::env(CLOCK_PORT)] && $::env(CLOCK_PORT) != ""} {
-    create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period $::env(CLOCK_PERIOD)
-} else {
-    create_clock -name __VIRTUAL_CLK__ -period $::env(CLOCK_PERIOD)
-    set ::env(CLOCK_PORT) __VIRTUAL_CLK__
-}
+create_clock [get_ports $::env(CLOCK_PORT1)]  -name $::env(CLOCK_PORT1)  -period $::env(CLOCK_PERIOD)
+create_clock [get_ports $::env(CLOCK_PORT2)]  -name $::env(CLOCK_PORT2)  -period $::env(CLOCK_PERIOD)
 
 set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
 set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
@@ -15,9 +11,11 @@ if { [info exists ::env(MAX_TRANSITION_CONSTRAINT)] } {
     set_max_transition $::env(MAX_TRANSITION_CONSTRAINT) [current_design]
 }
 
-set clk_input [get_port $::env(CLOCK_PORT)]
-set clk_indx [lsearch [all_inputs] $clk_input]
-set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx ""]
+set clk_input1 [get_port $::env(CLOCK_PORT1)]
+set clk_input2 [get_port $::env(CLOCK_PORT2)]
+set clk_indx1 [lsearch [all_inputs] $clk_input1]
+set clk_indx2 [lsearch [all_inputs] $clk_input2]
+set all_inputs_wo_clk [lreplace [lreplace [all_inputs] $clk_indx1 $clk_indx1 ""] $clk_indx2 $clk_indx2 ""]
 
 #set rst_input [get_port resetn]
 #set rst_indx [lsearch [all_inputs] $rst_input]
@@ -25,9 +23,11 @@ set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx ""]
 set all_inputs_wo_clk_rst $all_inputs_wo_clk
 
 # correct resetn
-set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk_rst
+set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT1)] $all_inputs_wo_clk_rst
+set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT2)] $all_inputs_wo_clk_rst
 #set_input_delay 0.0 -clock [get_clocks $::env(CLOCK_PORT)] {resetn}
-set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
+set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT1)] [all_outputs]
+set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT2)] [all_outputs]
 
 if { ![info exists ::env(SYNTH_CLK_DRIVING_CELL)] } {
     set ::env(SYNTH_CLK_DRIVING_CELL) $::env(SYNTH_DRIVING_CELL)
@@ -46,10 +46,12 @@ puts "\[INFO\]: Setting load to: $cap_load"
 set_load  $cap_load [all_outputs]
 
 puts "\[INFO\]: Setting clock uncertainty to: $::env(SYNTH_CLOCK_UNCERTAINTY)"
-set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINTY) [get_clocks $::env(CLOCK_PORT)]
+set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINTY) [get_clocks $::env(CLOCK_PORT1)]
+set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINTY) [get_clocks $::env(CLOCK_PORT2)]
 
 puts "\[INFO\]: Setting clock transition to: $::env(SYNTH_CLOCK_TRANSITION)"
-set_clock_transition $::env(SYNTH_CLOCK_TRANSITION) [get_clocks $::env(CLOCK_PORT)]
+set_clock_transition $::env(SYNTH_CLOCK_TRANSITION) [get_clocks $::env(CLOCK_PORT1)]
+set_clock_transition $::env(SYNTH_CLOCK_TRANSITION) [get_clocks $::env(CLOCK_PORT2)]
 
 puts "\[INFO\]: Setting timing derate to: [expr {$::env(SYNTH_TIMING_DERATE) * 100}] %"
 set_timing_derate -early [expr {1-$::env(SYNTH_TIMING_DERATE)}]
