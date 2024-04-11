@@ -31,7 +31,7 @@ module cdc_fifo #(
   dpram #(
     .DATA_WIDTH(DATA_WIDTH),
     .ADDRESS_WIDTH(ADDRESS_WIDTH)
-  ) memory (
+  ) fifo_memory (
     .clock(write_clock),
     .write_address(write_address),
     .write_data(write_data),
