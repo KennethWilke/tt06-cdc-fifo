@@ -1,7 +1,7 @@
 set clk_input1 [get_port $::env(CLOCK_PORT)]
 set clk_input2 [get_port $::env(CLOCK_PORT2)]
 
-create_clock $clk_input1  -name clock_1  -period $::env(CLOCK_PERIOD)
+create_clock $clk_input1 -name clock_1  -period $::env(CLOCK_PERIOD)
 create_clock $clk_input2 -name clock_2  -period $::env(CLOCK_PERIOD)
 
 set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]

@@ -20,10 +20,12 @@ written by Clifford E. Cummings of
 
 ## How to test
 
-Abandon all hope, ye who enter...
+Hold `write_reset` and `read_reset` low while running the clock for a bit to reset, then raise to initialize the module.
 
-I need to write this!
+### Writing to the FIFO
 
-## External hardware
+Prepare your data on the 4-bit `write_data` bus, ensure the `full` state is low and then raise `write_increment` for 1 cycle of `write_clock` to write data into the FIFO memory.
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+### Reading from the FIFO
+
+The FIFO will present the current output on the `read_data` bus. If `empty` is low, this output should be valid and you can acknowledge receive of this vallue by raising `read_increment` for 1 cycle of `read_clock`.
