@@ -35,8 +35,8 @@ module tt_um_kwilke_cdc_fifo (
 
   // uio_out mapping
   wire write_reset, read_reset;
-  assign write_reset = uio_in[0],
-    read_reset = uio_out[0];
+  assign write_reset = !uio_in[0],
+    read_reset = !uio_in[1];
 
   // The FIFO! May it live forever in silicon!
   cdc_fifo #(

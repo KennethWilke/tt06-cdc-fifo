@@ -13,7 +13,6 @@ module synchronizer #(
         out <= 0;
         data <= 0;
     end else begin
-        out <= data;
         {out, data} <= {data, in};
     end
   end

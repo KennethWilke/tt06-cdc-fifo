@@ -22,7 +22,7 @@ written by Clifford E. Cummings of
 
 ## How to test
 
-Hold `write_reset` and `read_reset` low while running the clock for a bit to reset, then raise to initialize the module.
+Hold `write_reset` and `read_reset` LOW while running the clock for a bit to reset, then raise to initialize the module.
 
 ### Writing to the FIFO
 
