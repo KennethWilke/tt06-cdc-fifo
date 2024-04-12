@@ -41,7 +41,7 @@ module tt_um_kwilke_cdc_fifo (
   // The FIFO! May it live forever in silicon!
   cdc_fifo #(
     .DATA_WIDTH(4),
-    .ADDRESS_WIDTH(5)
+    .ADDRESS_WIDTH(6)
   ) kwilke_fifo (
     .write_clock(write_clock),
     .write_reset(write_reset),
