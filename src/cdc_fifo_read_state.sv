@@ -14,14 +14,14 @@ module cdc_fifo_read_state #(
   logic [ADDRESS_WIDTH-1:0] write_address;
 
   gray_to_binary #(
-    .WIDTH(4)
+    .WIDTH(ADDRESS_WIDTH)
   ) write_addr_decode (
     .gray(write_address_gray),
     .binary(write_address)
   );
 
   binary_to_gray #(
-    .WIDTH(4)
+    .WIDTH(ADDRESS_WIDTH)
   ) read_addr_encode (
     .binary(read_address),
     .gray(read_address_gray)
