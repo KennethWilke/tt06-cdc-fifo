@@ -11,6 +11,8 @@ You can also include images in this folder and reference them in the markdown. E
 
 This is a FIFO that can pass data asynchronously across clock domains. This was a project I created when I was first learning logic design, and it took me a couple weeks to settle on a design that I felt was clean and reusable.
 
+The FIFO can hold 32 4-bit values, or 16 bytes. So use them wisely and greatly!
+
 The original design can be found at [https://github.com/KennethWilke/sv-cdc-fifo](https://github.com/KennethWilke/sv-cdc-fifo)
 
 The architecture of this design was influenced by
