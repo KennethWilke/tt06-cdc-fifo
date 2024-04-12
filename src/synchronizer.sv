@@ -3,10 +3,10 @@ module synchronizer #(
 ) (
   input logic clock,
   input logic reset,
-  input logic [0:WIDTH-1] in,
-  output logic [0:WIDTH-1] out);
+  input logic [WIDTH-1:0] in,
+  output logic [WIDTH-1:0] out);
 
-  logic [0:WIDTH-1] data;
+  logic [WIDTH-1:0] data;
 
   always_ff @ (posedge clock or posedge reset) begin
     if (reset) begin
